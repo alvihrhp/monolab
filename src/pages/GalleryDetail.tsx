@@ -84,7 +84,7 @@ function GalleryDetail() {
       </div>
 
       {/* Back Button */}
-      <div className="bg-primary backdrop-blur-sm border-b border-gray-100/50 relative">
+      <div className="bg-tertiary backdrop-blur-sm border-b border-gray-100/50 relative">
 
         {/* Header Background Ornaments */}
         <div className="absolute inset-0 opacity-5">
