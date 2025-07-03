@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import GalleryCard from '../components/ui/GalleryCard';
-import FontTest from '../components/ui/FontTest';
 import { galleryData } from '../utils/dummyData';
 import type { GalleryItem } from '../types';
-import logoSvg from '../assets/logo.svg';
 
 function Gallery() {
   const [items, setItems] = useState<GalleryItem[]>([]);
@@ -69,7 +66,7 @@ function Gallery() {
       </div>
 
       {/* Header Section */}
-      <div className="bg-tertiary backdrop-blur-sm border-b border-gray-200/50 relative">
+      <div className="bg-gray-400 backdrop-blur-sm border-b border-gray-200/50 relative">
 
         {/* Header Background Ornaments */}
         <div className="absolute inset-0 opacity-5">
@@ -101,7 +98,7 @@ function Gallery() {
       </div>
 
       {/* Filter Section */}
-      <div className="bg-tertiary backdrop-blur-sm border-b border-gray-100/50 relative">
+      <div className="bg-gray-400 backdrop-blur-sm border-b border-gray-100/50 relative">
         <div className="container mx-auto px-6 py-8">
           <div className="flex flex-wrap justify-center gap-2">
             {categories.map((category) => (

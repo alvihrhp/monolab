@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { galleryData } from '../utils/dummyData';
 import { isValidSlug } from '../utils/slugUtils';
 import type { GalleryItem } from '../types';
-import logoSvg from '../assets/logo.svg';
 
 function GalleryDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -84,7 +83,7 @@ function GalleryDetail() {
       </div>
 
       {/* Back Button */}
-      <div className="bg-tertiary backdrop-blur-sm border-b border-gray-100/50 relative">
+      <div className="bg-gray-400 backdrop-blur-sm border-b border-gray-100/50 relative">
 
         {/* Header Background Ornaments */}
         <div className="absolute inset-0 opacity-5">
