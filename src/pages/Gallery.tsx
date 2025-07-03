@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GalleryCard from '../components/ui/GalleryCard';
+import FontTest from '../components/ui/FontTest';
 import { galleryData } from '../utils/dummyData';
 import type { GalleryItem } from '../types';
+import logoSvg from '../assets/logo.svg';
 
 function Gallery() {
   const [items, setItems] = useState<GalleryItem[]>([]);
@@ -28,70 +31,117 @@ function Gallery() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-cyan-500 mx-auto mb-4"></div>
-          <p className="text-gray-400 text-lg">Loading gallery...</p>
+      <div className="min-h-screen bg-white/80 backdrop-blur-sm flex items-center justify-center relative overflow-hidden">
+        {/* Loading Background Ornaments */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-32 h-32 border border-gray-300 rounded-full ornament-float"></div>
+          <div className="absolute top-40 right-32 w-16 h-16 border border-gray-300 rounded-full ornament-float-delayed"></div>
+          <div className="absolute bottom-40 left-40 w-24 h-24 border border-gray-300 rounded-full ornament-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-40 h-40 border border-gray-300 rounded-full ornament-pulse-delayed"></div>
+        </div>
+        
+        <div className="text-center relative z-10">
+          <div className="animate-spin rounded-full h-12 w-12 border-2 border-gray-300 border-t-gray-900 mx-auto mb-4"></div>
+          <p className="text-gray-600 text-base font-gotham">Loading gallery...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <div className="min-h-screen bg-white/80 backdrop-blur-sm relative overflow-hidden">
+      {/* Background Ornaments */}
+      <div className="absolute inset-0 opacity-3">
+        {/* Geometric Circles */}
+        <div className="absolute top-32 left-16 w-96 h-96 border border-gray-200 rounded-full ornament-float"></div>
+        <div className="absolute top-64 right-24 w-64 h-64 border border-gray-200 rounded-full ornament-float-delayed"></div>
+        <div className="absolute bottom-32 left-32 w-48 h-48 border border-gray-200 rounded-full ornament-pulse"></div>
+        <div className="absolute bottom-64 right-16 w-80 h-80 border border-gray-200 rounded-full ornament-pulse-delayed"></div>
+        
+        {/* Geometric Squares */}
+        <div className="absolute top-96 left-64 w-32 h-32 border border-gray-200 rotate-45 ornament-rotate"></div>
+        <div className="absolute top-48 right-48 w-24 h-24 border border-gray-200 rotate-45 ornament-rotate-reverse"></div>
+        <div className="absolute bottom-96 left-96 w-40 h-40 border border-gray-200 rotate-45 ornament-rotate"></div>
+        
+        {/* Dotted Lines */}
+        <div className="absolute top-80 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent ornament-pulse"></div>
+        <div className="absolute bottom-80 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent ornament-pulse-delayed"></div>
+      </div>
+
       {/* Header Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10" />
-        <div className="relative container mx-auto px-4 py-16">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-4">
+      <div className="bg-tertiary backdrop-blur-sm border-b border-gray-200/50 relative">
+
+        {/* Header Background Ornaments */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-8 left-8 w-16 h-16 border border-gray-300 rounded-full ornament-float"></div>
+          <div className="absolute top-4 right-12 w-8 h-8 border border-gray-300 rounded-full ornament-float-delayed"></div>
+          <div className="absolute bottom-4 left-24 w-12 h-12 border border-gray-300 rounded-full ornament-pulse"></div>
+          <div className="absolute bottom-8 right-8 w-20 h-20 border border-gray-300 rounded-full ornament-pulse-delayed"></div>
+        </div>
+        
+        <div className="container mx-auto px-6 py-16 relative z-10">
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight font-gotham">
               Gallery
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Explore our collection of modern digital art and cyberpunk aesthetics
+            <p className="text-lg text-white leading-relaxed font-gotham">
+              Discover our curated collection of cultural artifacts and artistic treasures
             </p>
             
-            {/* Decorative Elements */}
-            <div className="mt-8 flex justify-center space-x-4">
-              <div className="h-px w-24 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
-              <div className="h-px w-24 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
-              <div className="h-px w-24 bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
+            {/* Decorative Element */}
+            <div className="mt-8 flex justify-center">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-px bg-gray-300"></div>
+                <div className="w-2 h-2 bg-gray-300 rounded-full"></div>
+                <div className="w-8 h-px bg-gray-300"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Filter Section */}
-      <div className="container mx-auto px-4 mb-8">
-        <div className="flex flex-wrap justify-center gap-3">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`
-                px-4 py-2 rounded-full font-medium transition-all duration-300
-                ${selectedCategory === category
-                  ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-white shadow-lg shadow-cyan-500/25'
-                  : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-white border border-gray-700'
-                }
-              `}
-            >
-              {category}
-            </button>
-          ))}
+      <div className="bg-tertiary backdrop-blur-sm border-b border-gray-100/50 relative">
+        <div className="container mx-auto px-6 py-8">
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`
+                  px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 font-gotham backdrop-blur-sm outline-none
+                  ${selectedCategory === category
+                    ? 'bg-primary text-white shadow-sm'
+                    : 'bg-white/80 text-gray-700 hover:bg-white/90 border border-gray-200/50'
+                  }
+                `}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Gallery Grid */}
-      <div className="container mx-auto px-4 pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="container mx-auto px-6 py-12 relative z-10">
+        {/* Grid Background Pattern */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <div className="grid grid-cols-8 gap-8 h-full">
+            {Array.from({ length: 32 }).map((_, i) => (
+              <div key={i} className="border-r border-gray-200 last:border-r-0"></div>
+            ))}
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10">
           {filteredItems.map((item, index) => (
             <div
               key={item.id}
-              className="animate-fade-in"
+              className="opacity-0 animate-fade-in"
               style={{
                 animationDelay: `${index * 100}ms`,
-                animationFillMode: 'both'
+                animationFillMode: 'forwards'
               }}
             >
               <GalleryCard item={item} />
@@ -100,17 +150,12 @@ function Gallery() {
         </div>
 
         {filteredItems.length === 0 && (
-          <div className="text-center py-16">
-            <div className="text-6xl mb-4">🎨</div>
-            <p className="text-gray-400 text-lg">No items found in this category</p>
+          <div className="text-center py-20 relative z-10">
+            <div className="text-5xl mb-6 text-gray-300">🎨</div>
+            <h3 className="text-xl font-medium text-gray-700 mb-2 font-gotham">No items found</h3>
+            <p className="text-gray-500 font-gotham">Try selecting a different category</p>
           </div>
         )}
-      </div>
-
-      {/* Background Decorative Elements */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-        <div className="absolute top-1/4 -right-48 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 -left-48 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
       </div>
     </div>
   );
