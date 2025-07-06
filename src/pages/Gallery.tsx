@@ -9,7 +9,7 @@ function Gallery() {
   const [isLoading, setIsLoading] = useState(true);
 
   // Get unique categories
-  const categories = ['All', ...Array.from(new Set(galleryData.map(item => item.category)))];
+  const categories = ['All', ...Array.from(new Set(galleryData.map(item => item.category)))]
 
   // Filter items based on selected category
   const filteredItems = selectedCategory === 'All' 
@@ -45,6 +45,15 @@ function Gallery() {
     );
   }
 
+  // Expose filter state to window for Navbar (temporary global state)
+  if (typeof window !== 'undefined') {
+    window.__galleryFilter = {
+      categories,
+      selectedCategory,
+      setSelectedCategory,
+    };
+  }
+
   return (
     <div className="min-h-screen bg-white/80 backdrop-blur-sm relative overflow-hidden">
       {/* Background Ornaments */}
@@ -54,12 +63,10 @@ function Gallery() {
         <div className="absolute top-64 right-24 w-64 h-64 border border-gray-200 rounded-full ornament-float-delayed"></div>
         <div className="absolute bottom-32 left-32 w-48 h-48 border border-gray-200 rounded-full ornament-pulse"></div>
         <div className="absolute bottom-64 right-16 w-80 h-80 border border-gray-200 rounded-full ornament-pulse-delayed"></div>
-        
         {/* Geometric Squares */}
         <div className="absolute top-96 left-64 w-32 h-32 border border-gray-200 rotate-45 ornament-rotate"></div>
         <div className="absolute top-48 right-48 w-24 h-24 border border-gray-200 rotate-45 ornament-rotate-reverse"></div>
         <div className="absolute bottom-96 left-96 w-40 h-40 border border-gray-200 rotate-45 ornament-rotate"></div>
-        
         {/* Dotted Lines */}
         <div className="absolute top-80 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent ornament-pulse"></div>
         <div className="absolute bottom-80 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent ornament-pulse-delayed"></div>
@@ -67,7 +74,6 @@ function Gallery() {
 
       {/* Header Section */}
       <div className="bg-gray-400 backdrop-blur-sm border-b border-gray-200/50 relative">
-
         {/* Header Background Ornaments */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-8 left-8 w-16 h-16 border border-gray-300 rounded-full ornament-float"></div>
@@ -75,16 +81,11 @@ function Gallery() {
           <div className="absolute bottom-4 left-24 w-12 h-12 border border-gray-300 rounded-full ornament-pulse"></div>
           <div className="absolute bottom-8 right-8 w-20 h-20 border border-gray-300 rounded-full ornament-pulse-delayed"></div>
         </div>
-        
         <div className="container mx-auto px-6 py-16 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight font-gotham">
-              Gallery
-            </h1>
             <p className="text-lg text-white leading-relaxed font-gotham">
               Discover our curated collection of cultural artifacts and artistic treasures
             </p>
-            
             {/* Decorative Element */}
             <div className="mt-8 flex justify-center">
               <div className="flex items-center space-x-2">
@@ -93,29 +94,6 @@ function Gallery() {
                 <div className="w-8 h-px bg-gray-300"></div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Filter Section */}
-      <div className="bg-gray-400 backdrop-blur-sm border-b border-gray-100/50 relative">
-        <div className="container mx-auto px-6 py-8">
-          <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`
-                  px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 font-gotham backdrop-blur-sm outline-none
-                  ${selectedCategory === category
-                    ? 'bg-primary text-white shadow-sm'
-                    : 'bg-white/80 text-gray-700 hover:bg-white/90 border border-gray-200/50'
-                  }
-                `}
-              >
-                {category}
-              </button>
-            ))}
           </div>
         </div>
       </div>
@@ -130,7 +108,6 @@ function Gallery() {
             ))}
           </div>
         </div>
-        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10">
           {filteredItems.map((item, index) => (
             <div
@@ -145,7 +122,6 @@ function Gallery() {
             </div>
           ))}
         </div>
-
         {filteredItems.length === 0 && (
           <div className="text-center py-20 relative z-10">
             <div className="text-5xl mb-6 text-gray-300">🎨</div>

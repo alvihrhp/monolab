@@ -2,10 +2,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Gallery from './pages/Gallery'
 import GalleryDetail from './pages/GalleryDetail'
 import ColorTest from './components/ui/ColorTest'
+import Navbar from './components/ui/Navbar'
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/gallery" replace />} />
         <Route path="/gallery" element={<Gallery />} />
