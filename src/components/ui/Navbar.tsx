@@ -57,7 +57,7 @@ function Navbar(props: NavbarProps) {
                 {categories!.map(category => (
                   <button
                     key={category}
-                    onClick={() => onSelectCategory!(category)}
+                    onClick={() => onSelectCategory(category)}
                     className={`px-2 py-1 text-base font-medium font-gotham transition-colors duration-150
                       ${selectedCategory === category
                         ? 'text-white font-bold'
