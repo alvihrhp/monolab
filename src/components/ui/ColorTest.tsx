@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 import logoSvg from '../../assets/logo.svg';
 
 function ColorTest() {
   return (
     <div className="min-h-screen bg-neutral relative">
+      <Navbar />
       {/* Logo in top left corner */}
       <div className="absolute top-4 left-4 z-20">
         <Link to="/gallery" className="block">

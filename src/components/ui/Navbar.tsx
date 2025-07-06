@@ -7,21 +7,9 @@ interface NavbarProps {
   onSelectCategory?: (category: string) => void;
 }
 
-declare global {
-  interface Window {
-    __galleryFilter?: {
-      categories: string[];
-      selectedCategory: string;
-      setSelectedCategory: (category: string) => void;
-    };
-  }
-}
-
 function Navbar(props: NavbarProps) {
-  // Prefer props, fallback to window.__galleryFilter
-  const categories = props.categories ?? window.__galleryFilter?.categories;
-  const selectedCategory = props.selectedCategory ?? window.__galleryFilter?.selectedCategory;
-  const onSelectCategory = props.onSelectCategory ?? window.__galleryFilter?.setSelectedCategory;
+  // Ambil langsung dari props
+  const { categories, selectedCategory, onSelectCategory } = props;
   const showFilter = categories && selectedCategory && onSelectCategory;
 
   return (
