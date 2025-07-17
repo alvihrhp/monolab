@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../components/ui/Navbar';
 import { galleryData } from '../utils/dummyData';
 import { isValidSlug } from '../utils/slugUtils';
 import type { GalleryItem } from '../types';
@@ -47,7 +46,6 @@ function GalleryDetail() {
   if (!item) {
     return (
       <>
-        <Navbar />
         <div className="min-h-screen bg-primary backdrop-blur-sm flex items-center justify-center relative overflow-hidden">
           {/* Loading Background Ornaments */}
           <div className="absolute inset-0 opacity-5">
@@ -68,7 +66,6 @@ function GalleryDetail() {
 
   return (
     <>
-      <Navbar />
       <div className="min-h-screen bg-white/80 backdrop-blur-sm relative overflow-hidden">
         {/* Background Ornaments */}
         <div className="absolute inset-0 opacity-3">
